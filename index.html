@@ -101,6 +101,19 @@
             overflow: hidden;
         }
 
+        .hero-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.15;
+            z-index: 0;
+            filter: blur(0px) brightness(1.1);
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -534,6 +547,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
+        <img src="Imagens/WhatsApp Image 2025-12-08 at 15.08.36.jpeg" alt="Logo Dri Makes & Perfumes" class="hero-logo">
         <div class="hero-content">
             <h1>Drimakes e Perfumes</h1>
             <p>Descubra fragrâncias exclusivas que contam sua história</p>
@@ -649,10 +663,7 @@
                 <img src="Imagens/WhatsApp Image 2025-12-08 at 12.08.25.jpeg" alt="Perfume 21" loading="lazy">
                 <div class="gallery-overlay"><span>Ver Produto</span></div>
             </div>
-            <div class="gallery-item" onclick="openLightbox(21)">
-                <img src="Imagens/WhatsApp Image 2025-12-08 at 15.08.36.jpeg" alt="Perfume 22" loading="lazy">
-                <div class="gallery-overlay"><span>Ver Produto</span></div>
-            </div>
+
         </div>
     </section>
 
@@ -754,8 +765,7 @@
             'Imagens/WhatsApp Image 2025-12-08 at 12.08.19.jpeg',
             'Imagens/WhatsApp Image 2025-12-08 at 12.08.21.jpeg',
             'Imagens/WhatsApp Image 2025-12-08 at 12.08.24.jpeg',
-            'Imagens/WhatsApp Image 2025-12-08 at 12.08.25.jpeg',
-            'Imagens/WhatsApp Image 2025-12-08 at 15.08.36.jpeg'
+            'Imagens/WhatsApp Image 2025-12-08 at 12.08.25.jpeg'
         ];
 
         let currentIndex = 0;
