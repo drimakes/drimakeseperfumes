@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de Natal - Drimakes e Perfumes. Confira nossas ofertas exclusivas!">
+    <title>Catálogo de Natal | Drimakes e Perfumes</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5A8B;
+            --primary-dark: #6B3A6B;
+            --secondary: #D4A574;
+            --gold: #C9A961;
+            --dark: #1a1a2e;
+            --light: #FAF7F5;
+            --gradient: linear-gradient(135deg, #8B5A8B 0%, #D4A574 100%);
+            --christmas-red: #c41e3a;
+            --christmas-green: #165B33;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Header */
+        .page-header {
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, var(--christmas-red) 0%, var(--christmas-green) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '🎄';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            top: 10%;
+            left: 5%;
+        }
+
+        .page-header::after {
+            content: '🎁';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.1;
+            bottom: 10%;
+            right: 5%;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Catalog Grid */
+        .catalog-section {
+            padding: 4rem 5%;
+            background: var(--light);
+        }
+
+        .catalog-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .catalog-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .catalog-intro p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .product-overlay span {
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .product-actions {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d1a;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--gold);
+        }
+
+        .lightbox-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-whatsapp:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .catalog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Drimakes Perfumes</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#galeria">Produtos</a></li>
+            <li><a href="#" style="color:var(--gold); font-weight:600;">🎄 Catálogo de Natal</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="nav-toggle" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <h1>🎄 Catálogo de Natal 🎁</h1>
+        <p>Presentes especiais para momentos inesquecíveis. Clique no produto para verificar disponibilidade via
+            WhatsApp!</p>
+    </header>
+
+    <!-- Catalog Section -->
+    <section class="catalog-section">
+        <div class="catalog-intro">
+            <h2>Ofertas Exclusivas de Natal</h2>
+            <p>Confira nossos produtos especiais para esta época mágica. Clique em "Verificar Disponibilidade" para
+                consultar preços e estoque diretamente pelo WhatsApp.</p>
+        </div>
+
+        <div class="catalog-grid" id="product-grid">
+            <!-- Products will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Drimakes e Perfumes. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5562999742576" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Produto" id="lightbox-img">
+            <a href="" class="lightbox-whatsapp" id="lightbox-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Verificar Disponibilidade
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Toggle
+        function toggleNav() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Product images and details from preco folder (new images with descriptive names)
+        const products = [
+            { image: "preco/Chaveirinho R$10,00.jpeg", name: "Chaveirinho", price: "R$ 10,00" },
+            { image: "preco/Hidratante + sabonetinho – 26,00.jpeg", name: "Hidratante + Sabonetinho", price: "R$ 26,00" },
+            { image: "preco/Hidratantes R$ 39,90.jpeg", name: "Hidratantes", price: "R$ 39,90" },
+            { image: "preco/KKit Hidratante CX de Sabonete Body Splash R$ 113,00.jpeg", name: "Kit Hidratante + CX Sabonete + Body Splash", price: "R$ 113,00" },
+            { image: "preco/Kit 02 Sabonetes 10,00.jpeg", name: "Kit 02 Sabonetes", price: "R$ 10,00" },
+            { image: "preco/Kit 02 Sabonetes R$ 10,00.jpeg", name: "Kit 02 Sabonetes", price: "R$ 10,00" },
+            { image: "preco/Kit 02 Sabonetinhos + Cesta – R$ 20,00.jpeg", name: "Kit 02 Sabonetinhos + Cesta", price: "R$ 20,00" },
+            { image: "preco/Kit Ariel 29,90.jpeg", name: "Kit Ariel", price: "R$ 29,90" },
+            { image: "preco/Kit Body Splash + CX de Sabonete 72,90.jpeg", name: "Kit Body Splash + CX de Sabonete", price: "R$ 72,90" },
+            { image: "preco/Kit Copinho + Sabonete – 25,00.jpeg", name: "Kit Copinho + Sabonete", price: "R$ 25,00" },
+            { image: "preco/Kit Copinho e Vasilhinhas R$ 24,90.jpeg", name: "Kit Copinho e Vasilhinhas", price: "R$ 24,90" },
+            { image: "preco/Kit Faixa de cabelo + Perfuminho – R$ 26,00.jpeg", name: "Kit Faixa de Cabelo + Perfuminho", price: "R$ 26,00" },
+            { image: "preco/Kit Hidratante ++ Body Splash 89,90.jpeg", name: "Kit Hidratante + Body Splash", price: "R$ 89,90" },
+            { image: "preco/Kit Hidratante e cx de sabonete 5 unidades.jpeg", name: "Kit Hidratante e CX de Sabonete 5 unidades", price: "R$ 63,00" },
+            { image: "preco/Kit Homem R$ 100,00.jpeg", name: "Kit Homem", price: "R$ 100,00" },
+            { image: "preco/Kit Kaiak 01 perfume, 01 toalhinha, 01 desodorante rollon, 01 sabonete de brinde.jpeg", name: "Kit Kaiak Completo", price: "R$ 113,00" },
+            { image: "preco/Kit Perfume Humor e 02 Sabonetes 100,00.jpeg", name: "Kit Perfume Humor + 02 Sabonetes", price: "R$ 100,00" },
+            { image: "preco/Kit Perfumes Humor R$ 100,00.jpeg", name: "Kit Perfumes Humor", price: "R$ 100,00" },
+            { image: "preco/Kit Sabonete Caneca Ursinho  R$ 96,00.jpeg", name: "Kit Sabonete Caneca Ursinho", price: "R$ 96,00" },
+            { image: "preco/Kit Sabonete Líquido Desodorante Rollon Sabonetinho.jpeg", name: "Kit Sabonete Líquido + Deo Rollon + Sabonetinho", price: "R$ 58,90" },
+            { image: "preco/Kit Sabonete Líquido e Deo Corporal 64,90.jpeg", name: "Kit Sabonete Líquido + Deo Corporal", price: "R$ 64,90" },
+            { image: "preco/Kit Sabonete R$ 23,00.jpeg", name: "Kit Sabonete", price: "R$ 23,00" },
+            { image: "preco/Kit Sabonetes R$16,90 Na Caixinha.jpeg", name: "Kit Sabonetes na Caixinha", price: "R$ 16,90" },
+            { image: "preco/Kit Sabonetinhos 15,00.jpeg", name: "Kit Sabonetinhos", price: "R$ 15,00" },
+            { image: "preco/Kit Sabonetinhos – 24,00.jpeg", name: "Kit Sabonetinhos Coração", price: "R$ 24,00" },
+            { image: "preco/Kit Shampoo 02 Sabonetes R$ 42,90.jpeg", name: "Kit Shampoo + 02 Sabonetes", price: "R$ 42,90" },
+            { image: "preco/Kit Ursinho com 01 Sabonete Cestinha R$ 29,90.jpeg", name: "Kit Ursinho + Sabonete + Cestinha", price: "R$ 29,90" },
+            { image: "preco/Kit bebê 03 sabonetinhos + cestinha – 25,00.jpeg", name: "Kit Bebê 03 Sabonetinhos + Cestinha", price: "R$ 25,00" },
+            { image: "preco/Kit com hidratante, Sabonete, Body splash – 113,00.jpeg", name: "Kit Hidratante + Sabonete + Body Splash", price: "R$ 113,00" },
+            { image: "preco/Kit com óleo corporal.jpeg", name: "Kit com Óleo Corporal", price: "R$ 55,00" },
+            { image: "preco/Kit hidratante e sabonetinhos 5 unidades – 63,00.jpeg", name: "Kit Hidratante + 5 Sabonetinhos", price: "R$ 63,00" },
+            { image: "preco/Kit masculino shampoo 02 em 1 somente – 32,00.jpeg", name: "Kit Masculino Shampoo 2 em 1", price: "R$ 32,00" },
+            { image: "preco/Kit perfume com cestinha e sabonete de brinde R$ 100,00.jpeg", name: "Kit Perfume + Cestinha + Sabonete", price: "R$ 100,00" },
+            { image: "preco/Kit sabonete liquido dispenser.jpeg", name: "Kit Sabonete Líquido Dispenser", price: "R$ 29,90" },
+            { image: "preco/Kit sabonete líquido masculino ,01 toalhinha, 01 sabonetinho em barra.jpeg", name: "Kit Sabonete Líquido Masc + Toalhinha", price: "R$ 37,00" },
+            { image: "preco/Kit água de banho e 05 sabonetes.jpeg", name: "Kit Água de Banho + 05 Sabonetes", price: "R$ 63,00" },
+            { image: "preco/Kiti Hidratante + Sabonete R$ 63,00.jpeg", name: "Kit Hidratante + Sabonete", price: "R$ 63,00" },
+            { image: "preco/Lebrancinha R$ 5,00.jpeg", name: "Lembrancinha", price: "R$ 5,00" },
+            { image: "preco/Lebrancinha Sabonetinho R$ 6,00.jpeg", name: "Lembrancinha Sabonetinho", price: "R$ 6,00" },
+            { image: "preco/Lebrancinha sabonetinho.jpeg", name: "Lembrancinha Sabonetinho", price: "R$ 8,00" },
+            { image: "preco/Lembrancinha Potinho com hidratante, Brinco, Sabonetinho – 10,00.jpeg", name: "Lembrancinha Potinho Completa", price: "R$ 10,00" },
+            { image: "preco/Lembrancinha Sabonetinho R$ 8,00.jpeg", name: "Lembrancinha Sabonetinho Esfera", price: "R$ 8,00" },
+            { image: "preco/Lembrancinha com 03 sabonetinhos – R$ 15,00.jpeg", name: "Lembrancinha 03 Sabonetinhos", price: "R$ 15,00" },
+            { image: "preco/Lembrancinha com sabonetinho e Toalha R$ 10,00.jpeg", name: "Lembrancinha Sabonetinho + Toalha", price: "R$ 10,00" },
+            { image: "preco/Shampoo + Condicionador e Sabonetinho 62,90.jpeg", name: "Shampoo + Condicionador + Sabonetinho", price: "R$ 62,90" },
+            { image: "preco/Toalhinha Com Sabonetinho R$ 10,00 Na Cestinha R$ 20,00.jpeg", name: "Toalhinha + Sabonetinho na Cestinha", price: "R$ 20,00" }
+        ];
+
+        // For compatibility with existing code
+        const productImages = products.map(p => p.image);
+        const productDetails = products.map(p => ({ name: p.name, price: p.price }));
+
+
+        const grid = document.getElementById('product-grid');
+        const whatsappNumber = '5562999742576';
+
+        function createWhatsAppLink(name, price) {
+            const message = encodeURIComponent(`Olá! Gostaria de verificar a disponibilidade do produto: ${name} (${price}). Aguardo retorno!`);
+            return `https://wa.me/${whatsappNumber}?text=${message}`;
+        }
+
+        function renderProducts() {
+            grid.innerHTML = productImages.map((image, index) => {
+                const encodedImage = encodeURI(image);
+                // Use details if available, otherwise fallback
+                const detail = productDetails[index] || { name: `Produto ${index + 1}`, price: "Consulte" };
+                const whatsappLink = createWhatsAppLink(detail.name, detail.price);
+
+                return `
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="openLightbox(${index})">
+                            <img src="${encodedImage}" alt="${detail.name}" class="product-image" loading="lazy">
+                            <div class="product-overlay">
+                                <span><i class="fas fa-search-plus"></i> Clique para ampliar</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <h3 style="font-size: 1rem; color: var(--primary-dark); margin-bottom: 0.25rem;">${detail.name}</h3>
+                            <p style="font-weight: 600; color: var(--gold); margin-bottom: 0.5rem;">${detail.price}</p>
+                            <a href="${whatsappLink}" class="whatsapp-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Verificar Disponibilidade
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Lightbox functionality
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const image = productImages[index];
+            const detail = productDetails[index] || { name: `Produto ${index + 1}`, price: "Consulte" };
+            const productNumber = index + 1;
+
+            document.getElementById('lightbox-img').src = encodeURI(image);
+            document.getElementById('lightbox-whatsapp').href = createWhatsAppLink(detail.name, detail.price);
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Close lightbox when clicking outside image
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Render products on page load
+        renderProducts();
+    </script>
+</body>
+
+</html>

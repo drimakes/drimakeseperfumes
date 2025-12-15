@@ -525,6 +525,332 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Christmas Banner - Modern & Vibrant */
+        .christmas-banner {
+            display: block;
+            position: relative;
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 25%, #166534 75%, #14532d 100%);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            border-top: 4px solid #fbbf24;
+            border-bottom: 4px solid #fbbf24;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .christmas-banner:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 60px rgba(185, 28, 28, 0.5), 0 0 40px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Animated Snow Particles */
+        .christmas-banner::before,
+        .christmas-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .christmas-banner::before {
+            background-image:
+                radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.7) 1.5px, transparent 1.5px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.5) 2px, transparent 2px);
+            background-size: 60px 80px, 100px 120px, 140px 160px;
+            animation: snowfall 8s linear infinite;
+        }
+
+        .christmas-banner::after {
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(251, 191, 36, 0.15) 0%, transparent 50%);
+        }
+
+        @keyframes snowfall {
+            0% {
+                background-position: 0 0, 0 0, 0 0;
+            }
+
+            100% {
+                background-position: 60px 400px, 100px 500px, 140px 600px;
+            }
+        }
+
+        .christmas-banner-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .christmas-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 0.75rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            animation: titlePulse 2s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titlePulse {
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.4), 3px 3px 6px rgba(0, 0, 0, 0.4);
+                transform: scale(1);
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(251, 191, 36, 0.8), 0 0 60px rgba(251, 191, 36, 0.6), 3px 3px 6px rgba(0, 0, 0, 0.4);
+                transform: scale(1.02);
+            }
+        }
+
+        .christmas-banner p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .christmas-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            color: #1a1a2e;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.25rem;
+            border-radius: 60px;
+            box-shadow:
+                0 8px 30px rgba(251, 191, 36, 0.5),
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: buttonPulse 1.5s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .christmas-btn:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow:
+                0 15px 50px rgba(251, 191, 36, 0.7),
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%);
+        }
+
+        @keyframes buttonPulse {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 8px 30px rgba(251, 191, 36, 0.5),
+                    0 4px 15px rgba(0, 0, 0, 0.2),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                    0 0 0 0 rgba(251, 191, 36, 0.4);
+            }
+
+            50% {
+                box-shadow:
+                    0 8px 30px rgba(251, 191, 36, 0.5),
+                    0 4px 15px rgba(0, 0, 0, 0.2),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                    0 0 0 15px rgba(251, 191, 36, 0);
+            }
+        }
+
+        .christmas-icons {
+            font-size: 3rem;
+            position: absolute;
+            animation: floatIcons 4s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+            z-index: 5;
+        }
+
+        .christmas-icons.left {
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .christmas-icons.right {
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation-delay: 2s;
+        }
+
+        @keyframes floatIcons {
+
+            0%,
+            100% {
+                transform: translateY(-50%) rotate(-5deg) scale(1);
+            }
+
+            25% {
+                transform: translateY(-60%) rotate(5deg) scale(1.1);
+            }
+
+            50% {
+                transform: translateY(-45%) rotate(-5deg) scale(1.05);
+            }
+
+            75% {
+                transform: translateY(-55%) rotate(3deg) scale(1.08);
+            }
+        }
+
+        /* Decorative elements */
+        .christmas-decor {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: sparkle 3s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .christmas-decor:nth-child(1) {
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .christmas-decor:nth-child(2) {
+            top: 20%;
+            right: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .christmas-decor:nth-child(3) {
+            bottom: 15%;
+            left: 25%;
+            animation-delay: 1s;
+        }
+
+        .christmas-decor:nth-child(4) {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+
+        .christmas-decor:nth-child(5) {
+            top: 40%;
+            left: 8%;
+            animation-delay: 0.7s;
+        }
+
+        .christmas-decor:nth-child(6) {
+            top: 35%;
+            right: 10%;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.3) rotate(180deg);
+            }
+        }
+
+        /* Countdown badge */
+        .christmas-badge {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5);
+            animation: badgePulse 2s ease-in-out infinite;
+            z-index: 20;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .christmas-banner {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .christmas-banner h2 {
+                font-size: 2rem;
+            }
+
+            .christmas-banner p {
+                font-size: 1rem;
+            }
+
+            .christmas-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .christmas-icons {
+                font-size: 2rem;
+            }
+
+            .christmas-icons.left {
+                left: 2%;
+            }
+
+            .christmas-icons.right {
+                right: 2%;
+            }
+
+            .christmas-decor {
+                display: none;
+            }
+
+            .christmas-badge {
+                top: 10px;
+                right: 10px;
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .christmas-icons {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -536,6 +862,7 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#galeria">Produtos</a></li>
+            <li><a href="catalogo-natal.html" style="color:var(--gold); font-weight:600;">Catálogo de Natal</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
         <div class="nav-toggle" onclick="toggleNav()">
@@ -556,6 +883,34 @@
             </a>
         </div>
     </section>
+
+    <!-- Christmas Banner -->
+    <a href="catalogo-natal.html" class="christmas-banner" id="christmas-banner">
+        <!-- Decorative sparkles -->
+        <span class="christmas-decor">✨</span>
+        <span class="christmas-decor">⭐</span>
+        <span class="christmas-decor">❄️</span>
+        <span class="christmas-decor">✨</span>
+        <span class="christmas-decor">⭐</span>
+        <span class="christmas-decor">❄️</span>
+
+        <!-- Badge -->
+        <span class="christmas-badge">🔥 OFERTA ESPECIAL</span>
+
+        <!-- Side Icons -->
+        <span class="christmas-icons left">🎄🎁</span>
+        <span class="christmas-icons right">🎅⭐</span>
+
+        <div class="christmas-banner-content">
+            <h2>🎄 Catálogo de Natal 🎁</h2>
+            <p>Presentes especiais para momentos inesquecíveis! Kits exclusivos com preços imperdíveis.</p>
+            <span class="christmas-btn">
+                <i class="fas fa-gift"></i>
+                Confira Nossos Kits de Natal
+                <i class="fas fa-arrow-right"></i>
+            </span>
+        </div>
+    </a>
 
     <!-- About Section -->
     <section class="about" id="sobre">
